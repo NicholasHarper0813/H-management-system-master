@@ -3,17 +3,16 @@ session_start();
 include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
-//code for add courses
 if($_POST['submit'])
 {
-$seater=$_POST['seater'];
-$fees=$_POST['fees'];
-$id=$_GET['id'];
-$query="update rooms set seater=?,fees=? where id=?";
-$stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('iii',$seater,$fees,$id);
-$stmt->execute();
-echo"<script>alert('Room Details has been Updated successfully');</script>";
+	$seater=$_POST['seater'];
+	$fees=$_POST['fees'];
+	$id=$_GET['id'];
+	$query="update rooms set seater=?,fees=? where id=?";
+	$stmt = $mysqli->prepare($query);
+	$rc=$stmt->bind_param('iii',$seater,$fees,$id);
+	$stmt->execute();
+	echo"<script>alert('Room Details has been Updated successfully');</script>";
 }
 
 ?>
