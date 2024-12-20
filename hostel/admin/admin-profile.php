@@ -3,19 +3,17 @@ session_start();
 include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
-//code for update email id
 if($_POST['update'])
 {
-$email=$_POST['emailid'];
-$aid=$_SESSION['id'];
-$udate=date('Y-m-d');
-$query="update admin set email=?,updation_date=? where id=?";
-$stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('ssi',$email,$udate,$aid);
-$stmt->execute();
-echo"<script>alert('Email id has been successfully updated');</script>";
+	$email=$_POST['emailid'];
+	$aid=$_SESSION['id'];
+	$udate=date('Y-m-d');
+	$query="update admin set email=?,updation_date=? where id=?";
+	$stmt = $mysqli->prepare($query);
+	$rc=$stmt->bind_param('ssi',$email,$udate,$aid);
+	$stmt->execute();
+	echo"<script>alert('Email id has been successfully updated');</script>";
 }
-// code for change password
 if(isset($_POST['changepwd']))
 {
   $op=$_POST['oldpassword'];
@@ -67,14 +65,13 @@ $chngpwd1->bind_param('ssi',$np,$udate,$ai);
 <script type="text/javascript">
 function valid()
 {
-
-if(document.changepwd.newpassword.value!= document.changepwd.cpassword.value)
-{
-alert("Password and Re-Type Password Field do not match  !!");
-document.changepwd.cpassword.focus();
-return false;
-}
-return true;
+	if(document.changepwd.newpassword.value!= document.changepwd.cpassword.value)
+	{
+		alert("Password and Re-Type Password Field do not match  !!");
+		document.changepwd.cpassword.focus();
+		return false;
+	}
+	return true;
 }
 </script>
 
@@ -85,19 +82,16 @@ return true;
 		<?php include('includes/sidebar.php');?>
 		<div class="content-wrapper">
 			<div class="container-fluid">
-
 				<div class="row">
 					<div class="col-md-12">
-					
 						<h2 class="page-title">Admin Profile</h2>
 	<?php	
 $aid=$_SESSION['id'];
 	$ret="select * from admin where id=?";
 		$stmt= $mysqli->prepare($ret) ;
 	 $stmt->bind_param('i',$aid);
-	 $stmt->execute() ;//ok
+	 $stmt->execute();
 	 $res=$stmt->get_result();
-	 //$cnt=1;
 	   while($row=$res->fetch_object())
 	  {
 	  	?>
@@ -106,8 +100,7 @@ $aid=$_SESSION['id'];
 								<div class="panel panel-default">
 									<div class="panel-heading">Admin profile details</div>
 									<div class="panel-body">
-										<form method="post" class="form-horizontal">
-											
+										<form method="post" class="form-horizontal">	
 											<div class="hr-dashed"></div>
 											<div class="form-group">
 												<label class="col-sm-2 control-label">Username </label>
@@ -119,7 +112,6 @@ $aid=$_SESSION['id'];
 												<label class="col-sm-2 control-label">Email</label>
 												<div class="col-sm-10">
 	<input type="email" class="form-control" name="emailid" id="emailid" value="<?php echo $row->email;?>" required="required">
-						 
 												</div>
 											</div>
 <div class="form-group">
@@ -128,17 +120,12 @@ $aid=$_SESSION['id'];
 									<input type="text" class="form-control" value="<?php echo $row->reg_date;?>" disabled >
 												</div>
 											</div>
-
-
-
 												<div class="col-sm-8 col-sm-offset-2">
 													<button class="btn btn-default" type="submit">Cancel</button>
 													<input class="btn btn-primary" type="submit" name="update" value="Update Profile">
 												</div>
 											</div>
-
 										</form>
-
 									</div>
 								</div>
 									<?php }  ?>
@@ -147,10 +134,8 @@ $aid=$_SESSION['id'];
 									<div class="panel-heading">Change Password</div>
 									<div class="panel-body">
 				<form method="post" class="form-horizontal" name="changepwd" id="change-pwd" onSubmit="return valid();">
-
  <?php if(isset($_POST['changepwd']))
 { ?>
-
 											<p style="color: red"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg']=""); ?></p>
 											<?php } ?>
 											<div class="hr-dashed"></div>
@@ -172,31 +157,20 @@ $aid=$_SESSION['id'];
 				<input type="password" class="form-control" value="" required="required" id="cpassword" name="cpassword" >
 												</div>
 											</div>
-
-
-
 												<div class="col-sm-6 col-sm-offset-4">
 													<button class="btn btn-default" type="submit">Cancel</button>
 													<input type="submit" name="changepwd" Value="Change Password" class="btn btn-primary">
 											</div>
-
 										</form>
 
 									</div>
 								</div>
 							</div>
 							</div>
-						
-									
-							
-
 							</div>
 						</div>
-
 					</div>
 				</div> 	
-				
-
 			</div>
 		</div>
 	</div>
@@ -210,35 +184,35 @@ $aid=$_SESSION['id'];
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
 	<script>
-function checkAvailability() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "check_availability.php",
-data:'emailid='+$("#emailid").val(),
-type: "POST",
-success:function(data){
-$("#user-availability-status").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
+function checkAvailability() 
+{
+	$("#loaderIcon").show();
+	jQuery.ajax({
+		url: "check_availability.php",
+		data:'emailid='+$("#emailid").val(),
+		type: "POST",
+		success:function(data){
+		$("#user-availability-status").html(data);
+		$("#loaderIcon").hide();
+	},
+	error:function (){}
+	});
 }
 </script>
 <script>
 function checkpass() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "check_availability.php",
-data:'oldpassword='+$("#oldpassword").val(),
-type: "POST",
-success:function(data){
-$("#password-availability-status").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
+	$("#loaderIcon").show();
+	jQuery.ajax({
+		url: "check_availability.php",
+		data:'oldpassword='+$("#oldpassword").val(),
+		type: "POST",
+		success:function(data){
+		$("#password-availability-status").html(data);
+		$("#loaderIcon").hide();
+		},
+		error:function (){}
+	});
 }
 </script>
 </body>
-
 </html>
