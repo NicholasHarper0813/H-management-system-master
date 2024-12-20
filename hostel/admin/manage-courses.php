@@ -8,8 +8,8 @@ if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
 	$adn="delete from courses where id=?";
-		$stmt= $mysqli->prepare($adn);
-		$stmt->bind_param('i',$id);
+	$stmt= $mysqli->prepare($adn);
+	$stmt->bind_param('i',$id);
         $stmt->execute();
         $stmt->close();	   
         echo "<script>alert('Data Deleted');</script>" ;
@@ -38,9 +38,8 @@ if(isset($_GET['del']))
 
 <body>
 	<?php include('includes/header.php');?>
-
 	<div class="ts-main-content">
-			<?php include('includes/sidebar.php');?>
+	<?php include('includes/sidebar.php');?>
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
@@ -92,26 +91,16 @@ while($row=$res->fetch_object())
 									<?php
 $cnt=$cnt+1;
 									 } ?>
-											
-										
 									</tbody>
 								</table>
-
-								
 							</div>
 						</div>
-
-					
 					</div>
 				</div>
-
-			
-
 			</div>
 		</div>
 	</div>
 
-	<!-- Loading Scripts -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -121,7 +110,6 @@ $cnt=$cnt+1;
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
-
 </body>
 
 </html>
