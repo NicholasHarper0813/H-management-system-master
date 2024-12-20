@@ -3,18 +3,17 @@ session_start();
 include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
-//code for add courses
 if($_POST['submit'])
 {
-$coursecode=$_POST['cc'];
-$coursesn=$_POST['cns'];
-$coursefn=$_POST['cnf'];
-$id=$_GET['id'];
-$query="update courses set course_code=?,course_sn=?,course_fn=? where id=?";
-$stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('sssi',$coursecode,$coursesn,$coursefn,$id);
-$stmt->execute();
-echo"<script>alert('Course has been Updated successfully');</script>";
+	$coursecode=$_POST['cc'];
+	$coursesn=$_POST['cns'];
+	$coursefn=$_POST['cnf'];
+	$id=$_GET['id'];
+	$query="update courses set course_code=?,course_sn=?,course_fn=? where id=?";
+	$stmt = $mysqli->prepare($query);
+	$rc=$stmt->bind_param('sssi',$coursecode,$coursesn,$coursefn,$id);
+	$stmt->execute();
+	echo"<script>alert('Course has been Updated successfully');</script>";
 }
 
 ?>
@@ -45,12 +44,9 @@ echo"<script>alert('Course has been Updated successfully');</script>";
 		<?php include('includes/sidebar.php');?>
 		<div class="content-wrapper">
 			<div class="container-fluid">
-
 				<div class="row">
 					<div class="col-md-12">
-					
 						<h2 class="page-title">Edit Course </h2>
-	
 						<div class="row">
 							<div class="col-md-12">
 								<div class="panel panel-default">
@@ -64,7 +60,6 @@ echo"<script>alert('Course has been Updated successfully');</script>";
 	 $stmt->bind_param('i',$id);
 	 $stmt->execute() ;//ok
 	 $res=$stmt->get_result();
-	 //$cnt=1;
 	   while($row=$res->fetch_object())
 	  {
 	  	?>
@@ -86,33 +81,19 @@ echo"<script>alert('Course has been Updated successfully');</script>";
 									<input type="text" class="form-control" name="cnf" value="<?php echo $row->course_fn;?>" >
 												</div>
 											</div>
-
-
 <?php } ?>
-												<div class="col-sm-8 col-sm-offset-2">
-													
+												<div class="col-sm-8 col-sm-offset-2">								
 													<input class="btn btn-primary" type="submit" name="submit" value="Update Course">
 												</div>
 											</div>
-
 										</form>
-
 									</div>
-								</div>
-									
-							
+								</div>				
 							</div>
-						
-									
-							
-
 							</div>
 						</div>
-
 					</div>
 				</div> 	
-				
-
 			</div>
 		</div>
 	</div>
@@ -125,7 +106,6 @@ echo"<script>alert('Course has been Updated successfully');</script>";
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
-
 </script>
 </body>
 
