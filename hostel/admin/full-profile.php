@@ -1,22 +1,22 @@
 <?php
-session_start();
-include("includes/config.php");
-$mysql_hostname = "localhost";
-$mysql_user = "root";
-$mysql_password = "";
-$mysql_database = "hostel";
-$prefix = "";
-$bd = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Could not connect database");
-mysql_select_db($mysql_database, $bd) or die("Could not select database");
+	session_start();
+	include("includes/config.php");
+	$mysql_hostname = "localhost";
+	$mysql_user = "root";
+	$mysql_password = "";
+	$mysql_database = "hostel";
+	$prefix = "";
+	$bd = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Could not connect database");
+	mysql_select_db($mysql_database, $bd) or die("Could not select database");
 ?>
 <script language="javascript" type="text/javascript">
 function f2()
 {
-window.close();
+	window.close();
 }
 function f3()
 {
-window.print(); 
+	window.print(); 
 }
 </script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -214,25 +214,14 @@ else
 <td class="comb-value1"><?php echo $row['pmnatetState'];?></td>
 </tr>
 <?php } ?>
-
-
-                   
                   </table></td>
-                </tr>
-               
-					
+                </tr>		
                   </table></td>
                 </tr>
               </table></td>
   </tr>
-		
-           
- 
-	 
     </table></td>
   </tr>
-
-  
   <tr>
     <td colspan="2" align="right" ><form id="form1" name="form1" method="post" action="">
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
