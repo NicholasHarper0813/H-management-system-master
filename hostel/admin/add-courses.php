@@ -3,20 +3,19 @@ session_start();
 include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
-//code for add courses
+
 if($_POST['submit'])
 {
-$coursecode=$_POST['cc'];
-$coursesn=$_POST['cns'];
-$coursefn=$_POST['cnf'];
-
-$query="insert into  courses (course_code,course_sn,course_fn) values(?,?,?)";
-$stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('sss',$coursecode,$coursesn,$coursefn);
-$stmt->execute();
-echo"<script>alert('Course has been added successfully');</script>";
+	$coursecode=$_POST['cc'];
+	$coursesn=$_POST['cns'];
+	$coursefn=$_POST['cnf'];
+	
+	$query="insert into  courses (course_code,course_sn,course_fn) values(?,?,?)";
+	$stmt = $mysqli->prepare($query);
+	$rc=$stmt->bind_param('sss',$coursecode,$coursesn,$coursefn);
+	$stmt->execute();
+	echo"<script>alert('Course has been added successfully');</script>";
 }
-
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
@@ -45,12 +44,9 @@ echo"<script>alert('Course has been added successfully');</script>";
 		<?php include('includes/sidebar.php');?>
 		<div class="content-wrapper">
 			<div class="container-fluid">
-
 				<div class="row">
 					<div class="col-md-12">
-					
 						<h2 class="page-title">Add Courses </h2>
-	
 						<div class="row">
 							<div class="col-md-12">
 								<div class="panel panel-default">
@@ -77,33 +73,18 @@ echo"<script>alert('Course has been added successfully');</script>";
 									<input type="text" class="form-control" name="cnf" value="" >
 												</div>
 											</div>
-
-
-
-												<div class="col-sm-8 col-sm-offset-2">
-													
+												<div class="col-sm-8 col-sm-offset-2">			
 													<input class="btn btn-primary" type="submit" name="submit" value="Add course">
 												</div>
 											</div>
-
 										</form>
-
 									</div>
 								</div>
-									
-							
 							</div>
-						
-									
-							
-
 							</div>
 						</div>
-
 					</div>
 				</div> 	
-				
-
 			</div>
 		</div>
 	</div>
@@ -116,8 +97,6 @@ echo"<script>alert('Course has been added successfully');</script>";
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
-
 </script>
 </body>
-
 </html>
