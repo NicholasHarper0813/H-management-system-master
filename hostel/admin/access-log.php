@@ -6,7 +6,6 @@ check_login();
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +26,6 @@ check_login();
 
 <body>
 	<?php include('includes/header.php');?>
-
 	<div class="ts-main-content">
 			<?php include('includes/sidebar.php');?>
 		<div class="content-wrapper">
@@ -66,7 +64,6 @@ check_login();
 $aid=$_SESSION['id'];
 $ret="select * from userlog";
 $stmt= $mysqli->prepare($ret) ;
-//$stmt->bind_param('i',$aid);
 $stmt->execute() ;
 $res=$stmt->get_result();
 $cnt=1;
@@ -83,27 +80,17 @@ while($row=$res->fetch_object())
 										</tr>
 									<?php
 $cnt=$cnt+1;
-									 } ?>
-											
-										
+									 } ?>						
 									</tbody>
 								</table>
-
-								
 							</div>
-						</div>
-
-					
+						</div>	
 					</div>
 				</div>
-
-			
-
 			</div>
 		</div>
 	</div>
 
-	<!-- Loading Scripts -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -113,7 +100,6 @@ $cnt=$cnt+1;
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
-
 </body>
 
 </html>
