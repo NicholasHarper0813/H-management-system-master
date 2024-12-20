@@ -3,30 +3,29 @@ session_start();
 include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
-//code for add courses
 if($_POST['submit'])
 {
-$seater=$_POST['seater'];
-$roomno=$_POST['rmno'];
-$fees=$_POST['fee'];
-$sql="SELECT room_no FROM rooms where room_no=?";
-$stmt1 = $mysqli->prepare($sql);
-$stmt1->bind_param('i',$roomno);
-$stmt1->execute();
-$stmt1->store_result(); 
-$row_cnt=$stmt1->num_rows;;
-if($row_cnt>0)
-{
-echo"<script>alert('Room alreadt exist');</script>";
-}
-else
-{
-$query="insert into  rooms (seater,room_no,fees) values(?,?,?)";
-$stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('iii',$seater,$roomno,$fees);
-$stmt->execute();
-echo"<script>alert('Room has been added successfully');</script>";
-}
+	$seater=$_POST['seater'];
+	$roomno=$_POST['rmno'];
+	$fees=$_POST['fee'];
+	$sql="SELECT room_no FROM rooms where room_no=?";
+	$stmt1 = $mysqli->prepare($sql);
+	$stmt1->bind_param('i',$roomno);
+	$stmt1->execute();
+	$stmt1->store_result(); 
+	$row_cnt=$stmt1->num_rows;;
+	if($row_cnt>0)
+	{
+		echo"<script>alert('Room alreadt exist');</script>";
+	}
+	else
+	{
+		$query="insert into  rooms (seater,room_no,fees) values(?,?,?)";
+		$stmt = $mysqli->prepare($query);
+		$rc=$stmt->bind_param('iii',$seater,$roomno,$fees);
+		$stmt->execute();
+		echo"<script>alert('Room has been added successfully');</script>";
+	}
 }
 ?>
 <!doctype html>
@@ -104,25 +103,14 @@ echo"<script>alert('Room has been added successfully');</script>";
 <input class="btn btn-primary" type="submit" name="submit" value="Create Room ">
 												</div>
 											</div>
-
 										</form>
-
 									</div>
-								</div>
-									
-							
+								</div>																
 							</div>
-						
-									
-							
-
 							</div>
 						</div>
-
 					</div>
 				</div> 	
-				
-
 			</div>
 		</div>
 	</div>
@@ -137,5 +125,4 @@ echo"<script>alert('Room has been added successfully');</script>";
 	<script src="js/main.js"></script>
 </script>
 </body>
-
 </html>
